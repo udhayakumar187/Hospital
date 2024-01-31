@@ -1,0 +1,72 @@
+
+<div>
+<form [formGroup]="userForm">
+  <input type="text" name="" id="" placeholder="Patient Name" formControlName = "patientName">
+  &nbsp;&nbsp;
+  <input type="number" name="" id="" placeholder="age" formControlName = "age">
+  <br>
+  <br>
+  <input type="text" name="" id="" placeholder="physician Name" formControlName ="physicianName" >
+  &nbsp;&nbsp;
+  <span>
+    <label>
+      <input type="radio" name="gender" value="male" formControlName = "gender" />
+      Male
+    </label>
+
+    <label>
+      <input type="radio" name="gender" value="Female" formControlName  = "gender" />
+      Female
+    </label>
+
+    <label>
+      <input type="radio" name="gender" value="other" formControlName  = "gender" />
+      Others
+    </label>
+  </span>
+  <br>
+  <br>
+  <select formControlName="prescribedTests" style="width:11%">
+    <option value="" disabled selected>Select Prescribed Test</option>
+    <option *ngFor="let test of prescribedTestsOptions" [value]="test">{{ test }}</option>
+  </select>
+
+
+<br>
+<br>
+<span style="margin-left:15%;">
+  <button (click)="save()">Save</button>
+  &nbsp;
+  <button (click)="reset()">Reset</button>
+</span>
+
+</form>
+
+<div *ngIf="patientDetails.length > 0">
+
+  <table>
+    <thead>
+      <tr>
+        <th>Patient Name</th>
+        <th>Age</th>
+        <th>Physician Name</th>
+        <th>Gender</th>
+        <th>Prescribed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of patientDetails">
+        <td>{{ data.patientName }}</td>
+        <td>{{ data.age }}</td>
+        <td>{{ data.physicianName }}</td>
+        <td>{{ data.gender }}</td>
+        <td>{{ data.prescribedTests }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+</div>
+
+

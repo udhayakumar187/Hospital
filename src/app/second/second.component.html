@@ -1,0 +1,61 @@
+<div>
+  <form [formGroup]="userForm">
+    <input type="text" placeholder="Physician Name" formControlName="physicianName" disabled>
+    &nbsp;&nbsp;
+    <input type="number" placeholder="Age" formControlName="age">
+    <br>
+    <br>
+    <select formControlName="specialization" style="width:11%">
+      <option value="" disabled selected>Select Specialization</option>
+      <option *ngFor="let option of prescribedTestsOptions" [value]="option">{{ option }}</option>
+    </select>
+    &nbsp;&nbsp;
+    <span>
+      <label>
+        <input type="radio" value="male" formControlName="gender" [checked]="gender === 'male'" />
+        Male
+      </label>
+
+      <label>
+        <input type="radio" value="Female" formControlName="gender" [checked]="gender === 'Female'" />
+        Female
+      </label>
+
+      <label>
+        <input type="radio" value="other" formControlName="gender" [checked]="gender === 'other'" />
+        Others
+      </label>
+    </span>
+    <br>
+    <br>
+    <input type="text" placeholder="Qualification" formControlName="qualification">
+
+    <br>
+    <br>
+    <span style="margin-left:15%;">
+      <button (click)="update()">Update</button>
+      &nbsp;
+      <button (click)="reset()">Reset</button>
+    </span>
+  </form>
+
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Physician Name</th>
+          <th>Specialization</th>
+          <th>Qualification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of physicianDetails">
+          <td (click)="editPhysician(data)">{{ data.physicianName }}</td>
+          <td>{{ data.specialization }}</td>
+          <td>{{ data.qualification }}</td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
